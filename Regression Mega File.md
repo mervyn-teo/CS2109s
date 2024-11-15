@@ -188,6 +188,16 @@ When using logistic regression, it is very difficult to find a "just right" amou
 	- Reducing the magnitude of weights for certain feature
 ### Regularisation
 To reduce the magnitude of weights, we can do it in the [loss function](#Disecting%20the%20loss%20function).
-$$\begin{align}J(W)&=\frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2\right] +1000w_3+1000w_4 \\ &= \frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2\right]+\lambda\sum^n_{i=1}w_n^2\end{align}$$
+$$\begin{align}J(W)&=\frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2\right] +1000w_3^2+1000w_4^2 \\ &= \frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2\right]+\lambda\sum^n_{i=1}w_n^2\end{align}$$
 
-in this case $\lambda$ is the **regulisation perimeter**. This is a constant that indicate how much you want to regularise this equation.
+in this case $\lambda$ is the **regulisation perimeter**. This is a constant that indicate how much you want to regularise this equation. since the weights. There are multiple reasons to square the weights, but the main reason is for mathematical convenience while partial differentiation later.
+
+### Modified Gradient Descent
+we can futher modify this equation to use for gradient descent, we can divide $\lambda$ by $2m$ because both are constants.
+$$J(w)= \frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2\right]+\frac{\lambda}{2m}\sum^n_{i=1}w_n^2$$
+After partial differentiation and using it as gradient descent formula:
+$$w_i\rightarrow w_i - \gamma\frac{1}{m}\sum^m_{i=1}(h_w(x^{(i)})-y^{(i)})x_j^{(i)}-\gamma\frac{\lambda}{m}w_j$$
+
+
+
+
