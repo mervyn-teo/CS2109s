@@ -215,3 +215,84 @@ $$w_i\rightarrow w_i - \gamma\frac{1}{m}\sum^m_{i=1}(h_w(x^{(i)})-y^{(i)})x_j^{(
 where:
 $$h_w (x) := \frac{1}{1+e^{-w^Tx}}$$
 # Support Vector Machines (SVM)
+SVM takes another approach to labeling data compared to logistic regression. The main idea behind SVM is we want to find a **margin**, that sperates different data point. We also want this margin to be **as large as possible**. 
+![[Pasted image 20241115175745.png|500]]
+From this margin, we will derive the equation of the hyperplane (aka our model) that helps us label our datapoints. The green dotted line indicates the linear equation $w \cdot x + b$ , it is a hyperplane seperating the elements. Those elements above the plane will be positive, below will be negative. (basically $w\cdot c+b\geq 0, \text{then +}$). in 2d, it is a line, while in 3d it is a plane, that can take any orientation.
+
+This is a 3D graph with 3 features for better visualisation.
+![[output.png|500]]
+
+Our aim now is to find the equation of the hyperplane. We will first label the data. After labelling, the data will the values of +1 and -1, the graph will look something like this:
+![[Pasted image 20241115182714.png|500]]
+Form this, we can derive these equations:
+$$\begin{align}
+w\cdot x^+ +b&\geq 1\\
+w\cdot x^- +b&\leq -1
+\end{align}$$
+combining them together using $$y^{(i)}=    \begin{cases}
+      +1 & \text{for + samples}\\
+      -1 & \text{for - samples}
+    \end{cases}$$
+We can derive:
+$$\begin{align}
+	y^{(i)}(w\cdot x^{(i)}+b)&\geq1\\
+	y^{(i)}(w\cdot x^{(i)}+b)-1&\geq0\\
+	y^{(i)}(w\cdot x^{(i)}+b)-1&=0, \text{for all x on margin}\\
+	(w\cdot x^{(i)}+b)&=\frac{1}{y^{(i)}}
+\end{align}$$
+Also, we can rearrange $x^+,x^-$ to:
+$$\begin{cases}
+      w\cdot x^+ =1-b\\
+      w\cdot x^- =-1-b
+\end{cases}$$Since $w$ is the direction vector of the hyper plane, we can use some vector magic to calculate the margins.
+![[Pasted image 20241115185651.png|500]]
+then what we need to do is very clear now, we need to somehow find $max\frac{2}{||w||}$ while ensuring $y^{(i)}(w\cdot x^{(i)}+b)-1=0$
+with some mathematical reduction, you will realise this problem is equivilent to:
+$$\begin{align} 
+	max\frac{2}{||w||} \\ 
+	max\frac{}{||w||} \\
+	min{||w||}\\
+	min\frac{1}{2}{||w||^2}
+\end{align}$$
+and rearranging $y^{(i)}(w\cdot x^{(i)}+b)-1=0$:
+$$b=y^{(i)}-w\cdot x^{(i)}$$
+### Lagrange
+Using Lagrange function (voodoo magic) we can get:
+$$\mathop{max}_{a\geq 0}\sum _ia^{(i)}-\frac{1}{2}\sum_i\sum_ja^{(i)}a^{(j)}y^{(i)}y^{(j)}x^{(i)}\cdot x^{(j)}$$
+## Soft-Margin
+What happens when the data is not linearly seperable?
+![[Pasted image 20241115192050.png|500]]
+In this case we introduce some slack variables( $\xi$ ), to allow certain data to be misclassified.
+$$\begin{align}
+w\cdot x^+ +b&\geq 1-\xi^{(i)}\\
+w\cdot x^- +b&\leq -1+\xi^{(i)}
+\end{align}$$
+our objective will become:
+$$min\frac{1}{2}{||w||^2}+C\sum_i\xi^{(i)}$$
+and classification condition will become
+$$\xi^{(i)}\geq1-y^{(i)}(w\cdot x^{(i)}+b)$$
+Combining them:
+$$J(w,b)=\frac{1}{2}||w||^2+C\sum_imax\{0,1-y^{(i)}(w\cdot x^{(i)}+b)\}$$
+### Disaster Strikes
+What happens if the data is **truley non linear seperable**?
+![[Pasted image 20241115193142.png|500]]
+instead of considering $x$ on its own, we can use a transformation function ( $\phi$ ) to change the features to something we can work with. 
+$$\phi(x_{1...i}) = [x_1,x_2,...,x_i,x_1^2,x_2^2,...,x_i^2,x_i^i]^T$$
+
+replacing the features in our [magic function](#Lagrange):
+$$\mathop{max}_{a\geq 0}\sum _ia^{(i)}-\frac{1}{2}\sum_i\sum_ja^{(i)}a^{(j)}y^{(i)}y^{(j)}\phi(x^{(i)})\cdot \phi(x^{(j)})$$
+This, however, may break the nicely crafted magic spell, since $\phi$ changes the dimentions of x, it produces incredible amounts of terms. 
+### Kernels
+To reduce the number of terms we can use the kernel trick, transforming $\phi$ into something we can work with more comfortbly.
+$$K(u,v)=\phi(u)\cdot\phi(v)=(u\cdot v)^d$$
+this is not the only kernel we have, we also have Gaussian (RBF) Kernel:
+$$K(u,v)=e^{-\frac{||u-v||^2}{2\sigma^2}}$$
+now the [magic function](#Lagrange) looks like this:
+$$\mathop{max}_{a\geq 0}\sum _ia^{(i)}-\frac{1}{2}\sum_i\sum_ja^{(i)}a^{(j)}y^{(i)}y^{(j)}K(x^{(i)}, x^{(j)})$$
+and the decision rule becomes:
+$$\sum_ia^{(i)}\hat y^{(i)}K(x^{(i)},x)+b\geq0, then \space+$$
+
+
+
+
+
