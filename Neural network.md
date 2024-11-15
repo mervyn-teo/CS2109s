@@ -1,11 +1,11 @@
 # Imitation
 the idea for neural networks comes from human brains, where it is built up of millions and millions neurons.
 
-This simulated neuron, we call it perceptrons. Perceptrons take in on to many values, and produce one value.
+This simulated neuron, we call it perceptron's. Perceptrons take in on to many values, and produce one value.
 ![[Pasted image 20241115214816.png|500]]
 This is basically a composite function consisting of 2 parts.
-1. summaiton function takes in multiple values, calculate its weighted sum 
-2. and an activation function, taking in the weighted sum calcualted by the summation function.
+1. summation function takes in multiple values, calculate its weighted sum 
+2. and an activation function, taking in the weighted sum calculated by the summation function.
 In formula form it looks like this:
 $$\hat y = h_w(x)= g\left(\sum_{i=0}^nw_ix_i\right)$$
 where $g()$ is the activation function.

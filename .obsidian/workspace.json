@@ -65,12 +65,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Neural network.md",
+                "file": "Regression Mega File.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Neural network"
+              "title": "Regression Mega File"
             }
           }
         ],
@@ -228,11 +228,11 @@
   },
   "active": "c3eee6a530642c56",
   "lastOpenFiles": [
+    "README.md",
+    "Neural network.md",
     "CS2109s/images/Pasted image 20241115214816.png",
     "CS2109s/images",
     "Regression Mega File.md",
-    "README.md",
-    "Neural network.md",
     "CS2109s/images/Pasted image 20241115193142.png",
     "CS2109s/images/Pasted image 20241115192050.png",
     "CS2109s/images/Pasted image 20241115192009.png",
@@ -245,7 +245,6 @@
     "CS2109s/images/Pasted image 20241114171120.png",
     "CS2109s/Regression Mega File.md",
     "CS2109s/README.md",
-    "CS2109s/images/Pasted image 20240826164856.png",
     "Untitled"
   ]
 }

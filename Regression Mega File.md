@@ -20,7 +20,7 @@ The effect will look somthing like this:![[Pasted image 20241114165450.png]]
 Using the gradient descent function in its raw form might result in many problems. The change per iteration (calling it step from here onwards) might be too small, meaning it will take a very long time to reach the minimum; it may be too big, the $w_1$ overshoots to the other side of the curve, unable to reach the true minimum. 
 ![[Pasted image 20241114170049.png | 300]]  ![[Pasted image 20241114170037.png | 300]]
 
-To conteract this, we will use the learning rate: $\gamma$ to control how much each step takes. 
+To counteract this, we will use the learning rate: $\gamma$ to control how much each step takes. 
 The descent formula now looks like this:
 $$w_i\rightarrow w_i - \gamma \frac{\delta J_{MSE}(W)}{\delta W_i}$$
 ### Careful of common mistakes
