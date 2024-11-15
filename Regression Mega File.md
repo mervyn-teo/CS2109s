@@ -177,8 +177,8 @@ some of the methods are:
 	- Use Bayesian methods to estimate the optimization space of the hyperparameters 
 - Evolutionary algorithms 
 	- Use evolutionary algorithms (e.g., genetic algo) to select a population of hyperparameters
-# Support Vector Machines (SVM)
-## Problem
+
+## Picking the right features
 When using logistic regression, it is very difficult to find a "just right" amount of features, we often will lead to overfitting
 
 ## Addressing overfit
@@ -191,13 +191,27 @@ To reduce the magnitude of weights, we can do it in the [loss function](#Disecti
 $$\begin{align}J(W)&=\frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2\right] +1000w_3^2+1000w_4^2 \\ &= \frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2\right]+\lambda\sum^n_{i=1}w_n^2\end{align}$$
 
 in this case $\lambda$ is the **regulisation perimeter**. This is a constant that indicate how much you want to regularise this equation. since the weights. There are multiple reasons to square the weights, but the main reason is for mathematical convenience while partial differentiation later.
-
-### Modified Gradient Descent
+### Modified Gradient Descent (linear regression)
+in linear regression we subsitute $h_w$ as $h_w (x) := w^Tx$
 we can futher modify this equation to use for gradient descent, we can divide $\lambda$ by $2m$ because both are constants.
-$$J(w)= \frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2\right]+\frac{\lambda}{2m}\sum^n_{i=1}w_n^2$$
+$$\begin{align}J(w)&= \frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2\right]+\frac{\lambda}{2m}\sum^n_{j=1}w_n^2 \\ &=\frac{1}{2m} \left[\sum^{m}_{i=1} (h_{w}(x^{(i)})-y^{(i)})^2+ \lambda\sum^n_{j=1}w^2_j\right]\end{align}$$
 After partial differentiation and using it as gradient descent formula:
 $$w_i\rightarrow w_i - \gamma\frac{1}{m}\sum^m_{i=1}(h_w(x^{(i)})-y^{(i)})x_j^{(i)}-\gamma\frac{\lambda}{m}w_j$$
+### Normal Equation
+Using this we can come up with a normal equation [similar to before](#Normal%20equation). Using intense big brain math we can rearrange the differentiated equation to this form:
 
+$$w=(X^TX+\lambda\begin{bmatrix}  
+0 & 0 & &0\\  
+0 & 1 && 0\\
+&&...\\
+0 & 0 & &1
 
-
-
+\end{bmatrix})^{-1}X^TY$$
+Which when $\lambda > 0$, it works even when $X^TX$ is not invertable!
+### Modified Gradient Descent (logistic regression)
+similar to[ linear regression](#Modified%20Gradient%20Descent%20(linear%20regression)), we can do the same thing:
+$$\begin{align}J(w)=\frac{1}{2m} \left[\sum^{m}_{i=1} y^{(i)}log\space h_{w}(x^{(i)})+(1-y^{(i)})log\left(1-h_w(x^{(i)})\right)+ \lambda\sum^n_{j=1}w^2_j\right]\end{align}$$
+$$w_i\rightarrow w_i - \gamma\frac{1}{m}\sum^m_{i=1}(h_w(x^{(i)})-y^{(i)})x_j^{(i)}-\gamma\frac{\lambda}{m}w_j$$
+where:
+$$h_w (x) := \frac{1}{1+e^{-w^Tx}}$$
+# Support Vector Machines (SVM)
