@@ -1,0 +1,235 @@
+{
+  "main": {
+    "id": "a27f8f730117cd37",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ef1b0138aeef4eb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c960cd766130779a",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          },
+          {
+            "id": "489139bdcef60a3e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CS2109s/Regression Mega File.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Regression Mega File"
+            }
+          },
+          {
+            "id": "2b3af8fa18c38af3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CS2109s/Regression Mega File.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Regression Mega File"
+            }
+          },
+          {
+            "id": "703df60ef9960c88",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c748b58786ff5ccc",
+    "type": "split",
+    "children": [
+      {
+        "id": "8aa236cca64abec4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "240d4a9d11b71a5d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "c1b56957188621de",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "a0d06b74651a2f28",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4d0adf79912478d0",
+    "type": "split",
+    "children": [
+      {
+        "id": "0c6eb0b746741fd7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d81f555ce7c3a54f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "CS2109s/Regression Mega File.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Regression Mega File"
+            }
+          },
+          {
+            "id": "c34519a204ddc87a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "CS2109s/Regression Mega File.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Regression Mega File"
+            }
+          },
+          {
+            "id": "b5c9846e4d0d9fd6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7a8389478ffcea57",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "CS2109s/Regression Mega File.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Regression Mega File"
+            }
+          },
+          {
+            "id": "78899bf926e5ddf8",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "703df60ef9960c88",
+  "lastOpenFiles": [
+    "CS2109s/images/Pasted image 20241115193142.png",
+    "CS2109s/images/Pasted image 20241115192050.png",
+    "CS2109s/images/Pasted image 20241115192009.png",
+    "CS2109s/images/Pasted image 20241115185651.png",
+    "CS2109s/images/Pasted image 20241115182714.png",
+    "CS2109s/images/output.png",
+    "CS2109s/images/Pasted image 20241115175745.png",
+    "images/Pasted image 20241115175706.png",
+    "images",
+    "CS2109s/images/Pasted image 20241114171120.png",
+    "CS2109s/Regression Mega File.md",
+    "CS2109s/README.md",
+    "CS2109s/images/Pasted image 20240826164856.png",
+    "CS2109s/images/Pasted image 20240909165037.png",
+    "CS2109s/images",
+    "Regression Mega File.md",
+    "Untitled"
+  ]
+}
