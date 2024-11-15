@@ -276,7 +276,7 @@ $$J(w,b)=\frac{1}{2}||w||^2+C\sum_imax\{0,1-y^{(i)}(w\cdot x^{(i)}+b)\}$$
 ### Disaster Strikes
 What happens if the data is **truley non linear seperable**?
 ![[Pasted image 20241115193142.png|500]]
-instead of considering $x$ on its own, we can use a transformation function ( $\phi$ ) to change the features to something we can work with. 
+instead of considering $x$ on its own, we can use a feature mapping function ( $\phi$ ) to change the features to something we can work with. 
 $$\phi(x_{1...i}) = [x_1,x_2,...,x_i,x_1^2,x_2^2,...,x_i^2,x_i^i]^T$$
 
 replacing the features in our [magic function](#Lagrange):

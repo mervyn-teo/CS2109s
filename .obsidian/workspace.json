@@ -65,12 +65,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Regression Mega File.md",
+                "file": "Neural network.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Regression Mega File"
+              "title": "Neural network"
             }
           }
         ],
@@ -228,21 +228,22 @@
   },
   "active": "c3eee6a530642c56",
   "lastOpenFiles": [
-    "README.md",
-    "Neural network.md",
-    "CS2109s/images/Pasted image 20241115214816.png",
-    "CS2109s/images",
+    "CS2109s/images/Pasted image 20241116022101.png",
+    "CS2109s/images/Pasted image 20241116022020.png",
+    "CS2109s/images/Pasted image 20241116021930.png",
     "Regression Mega File.md",
-    "CS2109s/images/Pasted image 20241115193142.png",
-    "CS2109s/images/Pasted image 20241115192050.png",
-    "CS2109s/images/Pasted image 20241115192009.png",
-    "CS2109s/images/Pasted image 20241115185651.png",
-    "CS2109s/images/Pasted image 20241115182714.png",
-    "CS2109s/images/output.png",
-    "CS2109s/images/Pasted image 20241115175745.png",
-    "images/Pasted image 20241115175706.png",
+    "Neural network.md",
+    "CS2109s/images/Pasted image 20241116021445.png",
+    "CS2109s/images/Pasted image 20241116021428.png",
+    "CS2109s/images/Pasted image 20241116021413.png",
+    "CS2109s/images/Pasted image 20241116021126.png",
+    "CS2109s/images/Pasted image 20241116021101.png",
+    "CS2109s/images/Pasted image 20241116020912.png",
+    "CS2109s/images/Pasted image 20241116020354.png",
+    "CS2109s/images/Pasted image 20241116020150.png",
+    "README.md",
+    "CS2109s/images",
     "images",
-    "CS2109s/images/Pasted image 20241114171120.png",
     "CS2109s/Regression Mega File.md",
     "CS2109s/README.md",
     "Untitled"
