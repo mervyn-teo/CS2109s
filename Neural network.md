@@ -1,4 +1,4 @@
-# Imitation
+# Imitating human brain
 the idea for neural networks comes from human brains, where it is built up of millions and millions neurons.
 
 This simulated neuron, we call it perceptron's. Perceptrons take in on to many values, and produce one value.
@@ -66,7 +66,7 @@ Using this in the network, we sill start from the last perceptron and slowly wor
 ![[Pasted image 20241117003724.png|500]]
 Using this forward and backward pass concept, we can find and update all the weight with 1 forward pass and 1 backward pass. This method even works with non-linear activation functions.
 
-## Computer Vison
+## Convolution Neural Network (CNN)
 Now with neural network, we can try to do something different. One real world application of neural network is to perform computer vision.
 We can feed all the pixels into the network, and use different perceptrons to identify different part of the image. 
 ![[Pasted image 20241117015857.png]]
@@ -129,3 +129,24 @@ $$\text{Input: }\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix},\text{Output: }10$$
 In real applications we drink some absinthe and see a combination of all these techniques to produce a Convolutional Neural Network (CNN). Depending on what is required and what features you want the model to highlight, you will choose different combination of these techniques. 
 ![[Pasted image 20241117024130.png]]
 # Sequential data
+Sequential data are data that have a relationship in between them. e.g. video, audio, text etc. Since neural networks are so good, can we use neural network for sequential data?
+
+The answer is yes, but we need to modify out methods to work with sequential data. 
+## Recurrent Neural Networks (RNN)
+The idea here is to include a special perceptron in our neural network, that takes in contextual information and produce outputs based on our second input and previous contextual information.
+![[Pasted image 20241117033303.png]]
+in this case it will look like this:
+$$h_t=g^{[h]}\left((W^{[xh]})^Tx_t+(W^{[hh]})^Th_{t-1}\right)$$
+and the corresponding output will look like this:
+$$\hat y_{t}=g^{[h]}\left((W^{[hy]})^Th_t\right)$$
+Since there is a recurring pattern, as a leetcode hard enjoyer, your brain must be tingling. We can which make it loop back to it self, siplifying the process. It looks something like this diagram:
+![[Pasted image 20241117033906.png|300]]
+note that this also means that the same weights are applied at each time step. This recurring method also mean that we can handle sentences of varying lengths.
+
+Using different layers similar to what is done in [CNN](#Convolution%20Neural%20Network%20(CNN)), we can have Deep RNNs:
+![[Pasted image 20241117034652.png]]
+
+Then you might wonder, sometimes what comes after the sequence might also be important. In this case, we can use a Bidirectional RNN, We can run another RNN, in the opposite direction, and we concat results from both sides together.![[Pasted image 20241117035319.png]]
+
+
+
