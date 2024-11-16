@@ -12,12 +12,11 @@ where $g()$ is the activation function.
 
 # Training
 Training this is very similar to what was done during linear regression.
-
 The loop is as follows:
 
 Initialize all $w_i$
 Loop (until convergence or max steps reached) • 
-	For each instance $(x^{(i)},y^{(i)})$, calculate $\hat y^(i) = h_w(x^{(i)})$ 
+	For each instance $(x^{(i)},y^{(i)})$, calculate $\hat y^{(i)} = h_w(x^{(i)})$ 
 	Select one misclassified instance $(x^{(i)},y^{(i)})$
 	Update weights $w \leftarrow w+\gamma(y^{(i)}-\hat y ^{(i)})x^{(i)}$
 
@@ -38,8 +37,6 @@ We can also simulate $|x-1|$ using this method, we can use two ReLU function in 
 ![[Pasted image 20241116020354.png|500]]
 These are some simplistic examples, real life usage tend to be more complex:![[Pasted image 20241116020912.png|500]]
 
-with all these layers, calculating $\hat y$ uses a series of matrix multiplication:
-![[Pasted image 20241116021126.png]]
 And depending on the purpose of the neural network, we apply different perceptrons at the end of the network:
 ![[Pasted image 20241116021428.png]]![[Pasted image 20241116021445.png]]
 by altering the activation function, we can use neural network to simulate other machine learning methods:
@@ -51,7 +48,84 @@ Adding feature mapping functions and sign functions, we can simulate SVM:
 We can also let the network figure the feature mapping out itself:
 ![[Pasted image 20241116022101.png]]
 
+## Training multi-layer neural networks
+As [mentioned above](#Training), we will need to calculate our predicted output $\hat y$, compare it with the real y value and update the data.
+
+### Forward Propagation
+with all these layers, calculating $\hat y$ uses a series of matrix multiplication:
+![[Pasted image 20241116021126.png]]
+### Back Propagation
+To calculate and update the weights, we need to differentiate the whole chain of functions. To do so, we will need to apply the chain rule.
+We can simplify this problem by focusing on one section of the operation:
+![[Pasted image 20241117003425.png|]]
+From the chain rule, we can deduce that:
+$$\frac{\delta L}{\delta w_i}=\frac{\delta L}{\delta u_i}v_i$$
+where $L$ represents the loss function.
+
+Using this in the network, we sill start from the last perceptron and slowly work forwards, until all weights are updated.
+![[Pasted image 20241117003724.png|500]]
+Using this forward and backward pass concept, we can find and update all the weight with 1 forward pass and 1 backward pass. This method even works with non-linear activation functions.
+
+## Computer Vison
+Now with neural network, we can try to do something different. One real world application of neural network is to perform computer vision.
+We can feed all the pixels into the network, and use different perceptrons to identify different part of the image. 
+![[Pasted image 20241117015857.png]]
+### Convolution Layer 
+As you can imagine, this will result in a very large input data, which takes a lot of computation power. However if you observe, not all the pixels are required. We can use a **convolution layer** to "compress" the image, retaining the important information about the original input.
+
+What this layer does it will apply a Kernel/Filter to the original image and take a weighted sum of everything. This retain information in areas that we may want to focus in, combining it to a singular value.
+![[Pasted image 20241117021208.png]]
+To calculate the convoluted inputs, we will slide the filter base on the specific step numbers, producing a feature map.
+![[Pasted image 20241117021632.png]]
+Sometime we might want to have different feature maps, we can repeat this process using other kernels/filters, producing a new feature map.
+![[Pasted image 20241117021744.png]]
+Common filters include  (not in syllabus, included it because its cool and i like cool things) :
+Edge detection filters:
+- **Sobel Filter:**
+    - Horizontal Sobel:$$\begin{bmatrix} -1 & -2 & -1 \\ 0 & 0 & 0 \\ 1 & 2 & 1 \end{bmatrix}$$​​
+    - Vertical Sobel: $$\begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix}​$$​​
+- **Prewitt Filter:**
+    - Horizontal Prewitt: $$\begin{bmatrix} -1 & -1 & -1 \\ 0 & 0 & 0 \\ 1 & 1 & 1 \end{bmatrix}​$$​​
+    - Vertical Prewitt: $$\begin{bmatrix} -1 & 0 & 1 \\ -1 & 0 & 1 \\ -1 & 0 & 1 \end{bmatrix}$$
+Blurring (Smoothing) Filters:
+- Reduce noise and smooth out details in the image.
+    - **Box Blur:**
+        - Averages the pixel values in a local region.
+        - Example: $$\frac{1}{9} \begin{bmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix}$$​​
+    - **Gaussian Blur:**
+        - Weighted average of neighboring pixels, emphasizing the center pixel.
+        - Example: A 3x3 Gaussian kernel:$$\frac{1}{16} \begin{bmatrix} 1 & 2 & 1 \\ 2 & 4 & 2 \\ 1 & 2 & 1 \end{bmatrix}$$​​
+
+We also apply paddings to our inputs before convolutions to preserve data at the edge of the input. This also let us control how big the output will be.
+![[Pasted image 20241117022740.png]]
+
+some common types of padding includes:
+- **Zero Padding:** Pads the input with zeros (most common).
+- **Reflective Padding:** Pads the input by reflecting the boundary pixels.
+- **Replicative Padding:** Pads by replicating the boundary pixels.
+
+Colored Photos often have multiple channels depending file type (e.g. RGB, CMYK etc.), we can convolute these layers individually to form desired output channels. 
+![[Pasted image 20241117022929.png]]
 
 
-
-
+### Pooling layers
+Pooling layers are layers that down sampling layers that reduces a feature map to ideal dimensions. 
+Common pooling methods include:
+- **Max Pooling**:
+    
+    - Takes the maximum value in each pooling window.
+    - Useful for capturing sharp, distinctive features like edges.
+    - Example (2x2 window): $$\text{Input: } \begin{bmatrix} 1 & 3 \\ 2 & 4 \end{bmatrix}, \text{ Output: } 4$$
+- **Average Pooling**:
+    
+    - Takes the average value of each pooling window.
+    - Smooths the features, useful for tasks where precise locations are less important.
+    - Example (2x2 window): $$\text{Input: } \begin{bmatrix} 1 & 3 \\ 2 & 4 \end{bmatrix}, \text{ Output: } 2.5$$
+- **Sum Pooling**
+	- Sums up all the values in each pooling window.  
+	- Useful for emphasizing the total magnitude of activations in a region.
+	- Example (2x2 window):  
+$$\text{Input: }\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix},\text{Output: }10$$
+In real applications we drink some absinthe and see a combination of all these techniques to produce a Convolutional Neural Network (CNN). Depending on what is required and what features you want the model to highlight, you will choose different combination of these techniques. 
+![[Pasted image 20241117024130.png]]
+# Sequential data

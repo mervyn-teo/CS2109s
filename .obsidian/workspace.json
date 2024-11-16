@@ -8,59 +8,21 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c960cd766130779a",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
-            }
-          },
-          {
-            "id": "489139bdcef60a3e",
+            "id": "45456eea0dcb6610",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS2109s/Regression Mega File.md",
+                "file": "Neural network.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Regression Mega File"
+              "title": "Neural network"
             }
           },
           {
-            "id": "2b3af8fa18c38af3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CS2109s/Regression Mega File.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Regression Mega File"
-            }
-          },
-          {
-            "id": "703df60ef9960c88",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Regression Mega File.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Regression Mega File"
-            }
-          },
-          {
-            "id": "c3eee6a530642c56",
+            "id": "16808260f9b3e182",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -74,7 +36,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -130,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "4d0adf79912478d0",
@@ -226,21 +189,21 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c3eee6a530642c56",
+  "active": "16808260f9b3e182",
   "lastOpenFiles": [
-    "CS2109s/images/Pasted image 20241116022101.png",
-    "CS2109s/images/Pasted image 20241116022020.png",
-    "CS2109s/images/Pasted image 20241116021930.png",
+    "CS2109s/images/Pasted image 20241117024130.png",
+    "CS2109s/images/Pasted image 20241117022929.png",
+    "CS2109s/images/Pasted image 20241117022740.png",
+    "CS2109s/images/Pasted image 20241117021744.png",
+    "CS2109s/images/Pasted image 20241117021632.png",
+    "CS2109s/images/Pasted image 20241117021208.png",
+    "CS2109s/images/Pasted image 20241117015857.png",
+    "CS2109s/images/Pasted image 20241117004300.png",
+    "CS2109s/images/Pasted image 20241117003724.png",
+    "CS2109s/images/Pasted image 20241117003425.png",
     "Regression Mega File.md",
+    "CS2109s/images/Pasted image 20241116022101.png",
     "Neural network.md",
-    "CS2109s/images/Pasted image 20241116021445.png",
-    "CS2109s/images/Pasted image 20241116021428.png",
-    "CS2109s/images/Pasted image 20241116021413.png",
-    "CS2109s/images/Pasted image 20241116021126.png",
-    "CS2109s/images/Pasted image 20241116021101.png",
-    "CS2109s/images/Pasted image 20241116020912.png",
-    "CS2109s/images/Pasted image 20241116020354.png",
-    "CS2109s/images/Pasted image 20241116020150.png",
     "README.md",
     "CS2109s/images",
     "images",
