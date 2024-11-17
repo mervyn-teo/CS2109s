@@ -161,4 +161,44 @@ As such, we will have 4 components:
 
 All the gate have the same base structure:
 ![[Pasted image 20241117191301.png]]
-Where $Z$ is the input to the gate, $Z_i$ is the information used to decide whether the input is to be taken or not. The red node represents the sigmoid activation function, and the blue node represents tanh function. The sigmoid activation function is use to simulate a open and closed gate, whereas the tanh function is used to ensure that the derivative will not face the same vanishing gradient problem compared to the conventional RNN, since it's second derivative can sustain for a long range before going to zero.
+Where $Z$ is the input to the gate, $Z_i$ is the information used to decide whether the input is to be taken or not. The red node represents the sigmoid activation function, and the blue node represents tanh function. 
+
+The sigmoid activation function is use to simulate a open and closed gate, whereas the tanh function is used to ensure that the derivative will not face the same vanishing gradient problem compared to the conventional RNN, since it's second derivative can sustain for a long range before going to zero.
+
+This is the whole process:
+![[Pasted image 20241118024904.png]]
+
+There are multiple types of RNN, we should use different types for different purposes:
+![[Pasted image 20241118024937.png]]
+
+## Self attention
+Our RNN now is able to process sequential data, it is unfortunately very slow. we will need to wait for the previous calculations complete before we can start on the next one. Is there a way to speed this up? Unfortunately we are unable to make our machines run faster, but we can use some tricks to make this process parallel friendly.
+
+this is where self-attention comes in. Self-attention basically is a layer before activation functions, after inputs. 
+![[Pasted image 20241118025721.png]]
+
+In this method, we judge how important a combination of words are using a attention score $\alpha$.
+![[Pasted image 20241118032433.png]]
+This is calculated using the dot product between q and k.
+- **q ("query")**: This measures how important the **current input ($x_i$​)** is for making a prediction. It's calculated by multiplying the input with a specific weight.
+- **k ("key")**: This measures how important the **other inputs** are for making the output. It is also calculated using weights, like q.
+The dot product combines these two values, showing how the importance of the current input relates to the importance of all the other inputs. This gives an output that reflects the overall influence of all inputs in generating the prediction.
+
+After this process we will use a SoftMax function to normalize this score, making it act like a "weight". We will also calculate $v_i$ the weight adjusted value of the input, and then multiply this $v_i$ with the $\alpha$ value. summing all instance of $v_i$ up, producing out final output $h_{current}$    
+![[Pasted image 20241118033553.png]]
+
+Now you might ask, how are these more parallel friendly? It is more clear when everything are putt into matrices. 
+![[Pasted image 20241118034716.png]]
+We can combine all the calculations needed for $q_i,k_i,v_i$ together in one matrix, which allow us to calculate $h_i$ together! Without waiting for others to complete first!
+
+## Transformers
+How can we take this to the next level? we use this as a means to condense information, to a form where we cannot understand, but we can train the machines to understand. We call this the transformer. a transformer works by using 2 component that uses self-attention: the encoder and the decoder.
+![[Pasted image 20241118035328.png]]
+This encoder decoder pairing does not need to be singular encoder decoder pair, it can include many copies of each component to handle more complex contexts.
+![[Pasted image 20241118035541.png]]
+In this case, to help the encoder and decoder understand each other better, we can include encoder-decoder attention layer. this allows the encoders to share contextual information to the decoder. In this encoder-decoder attention layer, queries are generated based on previous decoder block’s output; the keys and values are generated based on encoder’s output.
+![[Pasted image 20241118035802.png]]
+While you might not know what a transformer is, you’re probably familiar with ChatGPT, which stands for "Chat - Generative Pretrained Transformer"
+
+![[Pasted image 20241118040451.png]]
+This transformer architecture is also used on visual transformers, that takes in image values, producing contexts of the image.
