@@ -147,6 +147,18 @@ Using different layers similar to what is done in [CNN](#Convolution%20Neural%20
 ![[Pasted image 20241117034652.png]]
 
 Then you might wonder, sometimes what comes after the sequence might also be important. In this case, we can use a Bidirectional RNN, We can run another RNN, in the opposite direction, and we concat results from both sides together.![[Pasted image 20241117035319.png]]
+## Long-Short Term Memory (LSTM)
+Think about the situation where certain important information was at the very start of the RNN, and you want to retain it till the very end of your RNN's output. With multiple concatenations and loss calculations, gradients of the loss function will shrink exponentially.
 
+To resolve this issue, we introduce LSTM. As its name suggests, it provides context storage for long term use. The ideas is that we use sigmoid functions to simulate logic gates, since it produces 1 and 0 as outputs, we can use it to decide if certain information is allowed to pass through or not. 
 
+As such, we will have 4 components:
+- Input gate - gates controlling if inputs are written to the memory
+- Output gate - gates controlling if the outputs are sent from memory
+- Forget gate - gates determining if the current values in the memory is to be forgotten or not
+- Memory cell - component keeping all the long term contexts
+![[Pasted image 20241117185912.png]]
 
+All the gate have the same base structure:
+![[Pasted image 20241117191301.png]]
+Where $Z$ is the input to the gate, $Z_i$ is the information used to decide whether the input is to be taken or not. The red node represents the sigmoid activation function, and the blue node represents tanh function. The sigmoid activation function is use to simulate a open and closed gate, whereas the tanh function is used to ensure that the derivative will not face the same vanishing gradient problem compared to the conventional RNN, since it's second derivative can sustain for a long range before going to zero.
