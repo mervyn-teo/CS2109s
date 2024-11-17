@@ -202,3 +202,16 @@ While you might not know what a transformer is, you’re probably familiar with 
 
 ![[Pasted image 20241118040451.png]]
 This transformer architecture is also used on visual transformers, that takes in image values, producing contexts of the image.
+
+## Overfitting
+Similar to all kinds of AI models, neural networks also suffers from overfitting. We can apply some regularizing techniques to fix this issue. 
+### Drop out
+We can randomly set certain perceptrons' activations to 0 (we can make the weight 0), such that some perceptrons will not be considered. This means that different subsets of perceptrons are activated in different iteration of trainings. This forces the network to create redundancy (multiple pathways that leads to the same, instead of reinforcing a existing solution, that might be too specific).
+### Early stopping
+![[Pasted image 20241118042343.png]]
+similar to what was done in regression, we can apply early stopping to the point where the model have the least loss while validating using the validation dataset.
+
+## Vanishing/Exploding Gradient
+this is also a common issue with various machine learning techniques. Vanishing/Exploding gradient basically means the small/large gradient keep on getting smaller/larger. this is often due to the exponentially decreasing/increasing gradient after multiple calculations using saturating activation functions (e.g. sigmoid, tanh). 
+
+The solution is to use non-saturating activations functions such as ReLU, or simply clip the gradient, setting a maximum and minimum values, such that whenever the gradient passes the threshold, it defaults to the maximum/minimum.  
